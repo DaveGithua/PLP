@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        #loginForm {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #loginForm .form-group {
+            margin-bottom: 20px;
+        }
+
+        #loginForm .form-group input {
+            width: 100%;
+        }
+
+        #toggleForms {
+            margin-bottom: 20px;
+        }
+
+        .login-container,
+        .registration-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome !!!</h2>
+
+        <!-- Toggle Button -->
+        <div id="toggleForms">
+            <button id="showLoginForm">Login</button>
+            <button id="showRegistrationForm">Register</button>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="registrationForm" class="registration-container">
+            <h3>Registration Form</h3>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <div class="error" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <div class="error" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <div class="error" id="passwordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <div class="error" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100">
+                    <div class="error" id="ageError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="Other">
+                    <label for="other">Other</label>
+                    <div class="error" id="genderError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select id="country" name="country">
+                        <option value="Kenya">Kenya</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
+                        <option value="UK">UK</option>
+                        
+                    </select>
+                    <div class="error" id="countryError"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                    <div class="error" id="termsError"></div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="login-container">
+            <h3>Login Form</h3>
+            <form id="loginFormForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="loginEmail">
+                    <div class="error" id="loginEmailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="loginPassword">
+                    <div class="error" id="loginPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Forms
+        document.getElementById('showLoginForm').addEventListener('click', function() {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        });
+
+        document.getElementById('showRegistrationForm').addEventListener('click', function() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+        });
+
+        // Registration Form Validation
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            clearErrors();
+
+            let isValid = true;
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                showError('nameError', 'Name is required.');
+                isValid = false;
+            }
+
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailPattern.test(email)) {
+                showError('emailError', 'A valid email is required.');
+                isValid = false;
+            }
+
+            const password = document.getElementById('password').value;
+            if (password.length < 8) {
+                showError('passwordError', 'Password must be at least 8 characters long.');
+                isValid = false;
+            }
+
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                showError('confirmPasswordError', 'Passwords do not match.');
+                isValid = false;
+            }
+
+            const age = parseInt(document.getElementById('age').value, 10);
+            if (isNaN(age) || age < 18 || age > 100) {
+                showError('ageError', 'Age must be a number between 18 and 100.');
+                isValid = false;
+            }
+
+            const gender = document.querySelector('input[name="gender"]:checked');
+            if (!gender) {
+                showError('genderError', 'Please select your gender.');
+                isValid = false;
+            }
+
+            const country = document.getElementById('country').value;
+            if (country === '') {
+                showError('countryError', 'Please select your country.');
+                isValid = false;
+            }
+
+            const terms = document.getElementById('terms').checked;
+            if (!terms) {
+                showError('termsError', 'You must agree to the terms and conditions.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Registration form submitted successfully!');
+            }
+        });
+
+        // Login Form
+        document.getElementById('loginFormForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            clearErrors();
+
+            let isValid = true;
+            const loginEmail = document.getElementById('loginEmail').value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (loginEmail === '' || !emailPattern.test(loginEmail)) {
+                showError('loginEmailError', 'A valid email is required.');
+                isValid = false;
+            }
+
+            const loginPassword = document.getElementById('loginPassword').value;
+            if (loginPassword === '') {
+                showError('loginPasswordError', 'Password is required.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Login form submitted successfully!');
+            }
+        });
+
+        function showError(id, message) {
+            document.getElementById(id).textContent = message;
+        }
+
+        function clearErrors() {
+            const errors = document.querySelectorAll('.error');
+            errors.forEach(error => error.textContent = '');
+        }
+    </script>
+</body>
+</html>
